@@ -1,14 +1,15 @@
 <script setup lang="ts">
 import { RouterLink, RouterView } from 'vue-router'
-import HelloWorld from './components/HelloWorld.vue'
+import InfoBanner from './components/InfoBanner.vue'
 </script>
 
 <template>
   <header>
-    <img alt="Vue logo" class="logo" src="@/assets/logo.svg" width="125" height="125" />
+    <InfoBanner
+      msg="The application is still in alpha and as such should not be considered as the end product and be known that it will move to a permanent domain!" />
 
     <div class="wrapper">
-      <HelloWorld msg="You did it!" />
+      <img alt="Vue logo" class="logo" src="@/assets/logo.svg" width="125" height="125" />
 
       <nav>
         <RouterLink to="/">Home</RouterLink>
@@ -19,4 +20,3 @@ import HelloWorld from './components/HelloWorld.vue'
 
   <RouterView />
 </template>
-
