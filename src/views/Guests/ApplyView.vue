@@ -23,7 +23,7 @@ import SecondaryButton from '@/components/SecondaryButton.vue';
             </div>
 
             <div class="flex items-center justify-center mt-6 space-x-2">
-                <PrimaryButton label="Connect Wallet" />
+                <PrimaryButton href="/dashboard" label="Connect Wallet" />
 
                 <SecondaryButton href="/" label="Back to Home" />
             </div>

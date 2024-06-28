@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import InfoBanner from '@/components/InfoBanner.vue';
 import NavBar from '@/components/NavBar.vue';
 import PrimaryButton from '@/components/PrimaryButton.vue';
 import SecondaryButton from '@/components/SecondaryButton.vue';
@@ -10,8 +9,6 @@ import TheFeatures from '@/components/TheFeatures.vue';
 <template>
   <main>
     <div class="relative">
-      <InfoBanner
-        msg="The application is still in alpha and as such should not be considered as the end product and be known that it will move to a permanent domain!" />
 
       <NavBar />
 

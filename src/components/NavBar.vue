@@ -2,11 +2,14 @@
 import { RouterLink } from 'vue-router'
 import ApplicationLogo from './ApplicationLogo.vue';
 import { ref } from 'vue';
+import InfoBanner from './InfoBanner.vue';
 
 const isOpen = ref(false)
 </script>
 
 <template>
+    <InfoBanner
+        msg="The application is still in alpha and as such should not be considered as the end product and be known that it will move to a permanent domain!" />
     <nav class="relative max-w-7xl bg-background">
         <div class="container px-6 py-4 mx-auto md:flex md:justify-between md:items-center">
             <div class="flex items-center justify-between">
