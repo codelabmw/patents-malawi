@@ -1,6 +1,6 @@
 <script setup lang="ts">
 defineProps<{
-    msg: string
+    msg: string,
 }>()
 </script>
 
@@ -24,7 +24,7 @@ defineProps<{
                 <strong class="font-semibold">{{ msg }}</strong>
             </p>
         </div>
-        <div class="flex flex-1 justify-end">
+        <div class="flex justify-end flex-1">
         </div>
     </div>
 </template>
