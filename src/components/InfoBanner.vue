@@ -20,7 +20,7 @@ defineProps<{
             </div>
         </div>
         <div class="flex flex-wrap items-center gap-x-4 gap-y-2">
-            <p class="text-sm leading-6 text-gray-900">
+            <p class="text-xs leading-6 text-gray-900">
                 <strong class="font-semibold">{{ msg }}</strong>
             </p>
         </div>
