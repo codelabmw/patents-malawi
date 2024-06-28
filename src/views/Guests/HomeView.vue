@@ -1,18 +1,22 @@
 <script setup lang="ts">
+import InfoBanner from '@/components/InfoBanner.vue';
 import NavBar from '@/components/NavBar.vue';
 import PrimaryButton from '@/components/PrimaryButton.vue';
 import SecondaryButton from '@/components/SecondaryButton.vue';
 import TertiaryButton from '@/components/TertiaryButton.vue';
-import TheFeature from '@/components/TheFeature.vue';
+import TheFeatures from '@/components/TheFeatures.vue';
 </script>
 
 <template>
   <main>
-    <div class="relative my-2">
+    <div class="relative">
+      <InfoBanner
+        msg="The application is still in alpha and as such should not be considered as the end product and be known that it will move to a permanent domain!" />
+
       <NavBar />
 
       <!-- HERO SECTION -->
-      <div class="relative w-full bg-[url('@/assets/images/Decorations.svg')]">
+      <div class="my-2 relative w-full bg-[url('@/assets/images/Decorations.svg')]">
         <!-- bg-right-bottom bg-[length:800px_800px] bg-no-repeat w-full h-full -->
 
         <div class="container px-6 py-16 mx-auto max-w-7xl">
@@ -52,7 +56,7 @@ import TheFeature from '@/components/TheFeature.vue';
 
       <!-- FEATURES SECTION -->
       <div class="my-12 max-w-7xl">
-        <TheFeature />
+        <TheFeatures />
       </div>
 
       <!-- JUMBLETRON -->
