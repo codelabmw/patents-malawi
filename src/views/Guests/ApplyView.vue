@@ -1,6 +1,22 @@
 <script setup lang="ts">
 import PrimaryButton from '@/components/PrimaryButton.vue';
 import SecondaryButton from '@/components/SecondaryButton.vue';
+import LoadingIcon from '@/components/icons/LoadingIcon.vue';
+
+import { Routes } from '@/router';
+import { useWeb3Modal } from '@web3modal/ethers/vue';
+import { useRouter } from 'vue-router';
+import { Connection } from '@/services/WalletConnectService';
+import { ref } from 'vue';
+
+const modal = useWeb3Modal()
+
+const loading = ref<boolean>(false)
+const router = useRouter()
+
+document.addEventListener(Connection.CONNECTED, () => {
+    router.push(Routes.dashboard.name)
+}, { once: true })
 </script>
 
 <template>
@@ -22,8 +38,12 @@ import SecondaryButton from '@/components/SecondaryButton.vue';
                 </p>
             </div>
 
-            <div class="flex items-center justify-center mt-6 space-x-2">
-                <PrimaryButton href="/dashboard" label="Connect Wallet" />
+            <div v-if="loading" class="mt-6 grid place-content-center">
+                <LoadingIcon class="text-4xl text-primary" />
+            </div>
+
+            <div v-else class="flex items-center justify-center mt-6 space-x-2">
+                <PrimaryButton @click="loading = true, modal.open()" label="Connect Wallet" />
 
                 <SecondaryButton href="/" label="Back to Home" />
             </div>

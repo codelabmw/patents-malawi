@@ -9,10 +9,13 @@ defineProps({
         default: ''
     }
 })
+
+const emit = defineEmits(['click'])
 </script>
 
 <template>
     <button v-if="!href"
+        @click="emit('click')"
         class="w-full px-5 py-3 mt-6 text-xs font-light tracking-wider transition-colors duration-300 transform rounded-lg text-primary-foreground bg-primary lg:w-auto hover:bg-primary/95 focus:outline-none focus:bg-primary/95">{{
             label }}
     </button>

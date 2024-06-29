@@ -1,22 +1,32 @@
 <script lang="ts" setup>
-import { RouterLink } from 'vue-router'
 import ApplicationLogo from '@/components/ApplicationLogo.vue';
-import { ref } from 'vue';
-import ProfileIcon from '@/components/icons/ProfileIcon.vue';
 import NotificationIcon from '@/components/icons/NotificationIcon.vue';
+
+import { ref } from 'vue';
+import { Routes } from '@/router';
+import { RouterLink, useRouter } from 'vue-router'
+import { useWeb3Modal } from '@web3modal/ethers/vue';
+import { Connection } from '@/services/WalletConnectService';
 
 const isOpen = ref(false)
 const toggleProfile = ref(false)
 const toggleNotification = ref(false)
+
+const modal = useWeb3Modal()
+const router = useRouter()
+
+document.addEventListener(Connection.DISCONNECTED, () => {
+    router.push(Routes.apply.name)
+}, { once: true })
 </script>
 
 <template>
     <nav class="relative mx-auto max-w-7xl bg-background">
         <div class="container px-6 py-4 mx-auto md:flex md:justify-between md:items-center">
             <div class="flex items-center justify-between">
-                <a href="/dashboard">
+                <RouterLink :to="Routes.home.path">
                     <ApplicationLogo class="w-48" />
-                </a>
+                </RouterLink>
 
                 <!-- Mobile menu button -->
                 <div class="flex lg:hidden">
@@ -100,15 +110,18 @@ const toggleNotification = ref(false)
                         </div>
 
                         <div v-if="toggleProfile"
-                            class="absolute right-0 z-50 w-48 py-1 mt-2 origin-top-right bg-white rounded-md shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none"
+                            class="absolute right-0 z-50 w-48 p-2 mt-2 origin-top-right bg-white rounded-md shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none"
                             role="menu" aria-orientation="vertical" aria-labelledby="user-menu-button" tabindex="-1">
                             <!-- Active: "bg-gray-100", Not Active: "" -->
                             <a href="#" class="block px-4 py-2 text-sm text-gray-700" role="menuitem" tabindex="-1"
                                 id="user-menu-item-0">Your Profile</a>
                             <a href="#" class="block px-4 py-2 text-sm text-gray-700" role="menuitem" tabindex="-1"
                                 id="user-menu-item-1">Settings</a>
-                            <a href="#" class="block px-4 py-2 text-sm text-gray-700" role="menuitem" tabindex="-1"
-                                id="user-menu-item-2">Sign out</a>
+                            <hr>
+                            <button @click="modal.open()"
+                                class="w-full block mt-2 px-4 py-2 text-left text-sm text-muted-foreground hover:bg-muted">
+                                Wallet
+                            </button>
                         </div>
                     </div>
                 </div>

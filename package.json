@@ -14,9 +14,14 @@
     "format": "prettier --write src/"
   },
   "dependencies": {
+<<<<<<< HEAD
     "@vueuse/core": "^10.11.0",
+=======
+    "@web3modal/ethers": "^5.0.3",
+>>>>>>> ef2087fee223c9f23aa8a5128f03c69e7c396f3c
     "class-variance-authority": "^0.7.0",
     "clsx": "^2.1.1",
+    "ethers": "^6.13.1",
     "lucide-react": "^0.398.0",
     "pinia": "^2.1.7",
     "tailwind-merge": "^2.3.0",
