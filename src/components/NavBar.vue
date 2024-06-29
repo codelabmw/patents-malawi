@@ -65,7 +65,7 @@ const isOpen = ref(false)
                 <div class="flex justify-center md:block">
                     <RouterLink to="/apply"
                         class="px-4 py-2 text-sm transition-colors duration-300 transform rounded-md bg-primary text-primary-foreground md:my-0">
-                        Apply
+                        Create patent
                     </RouterLink>
                 </div>
             </div>
