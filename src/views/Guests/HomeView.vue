@@ -13,13 +13,8 @@ import AnimatedHeroImage from './Partials/AnimatedHeroImage.vue';
       <NavBar />
 
       <!-- HERO SECTION -->
-<<<<<<< HEAD
-      <div
-        class="my-2 relative w-full flex flex-col justify-center h-[85vh] bg-[url('@/assets/images/Decorations.svg')] bg-no-repeat">
-=======
       <div class="my-2 relative w-full flex flex-col justify-center h-[85vh] bg-no-repeat">
         <!-- bg-right-bottom bg-[length:800px_800px] bg-no-repeat w-full h-full -->
->>>>>>> 893d5da7d76bcc2c2603ea25485a1c865747c760
 
         <div class="container px-6 py-16 mx-auto max-w-7xl">
           <div class="items-center lg:flex">
@@ -48,12 +43,9 @@ import AnimatedHeroImage from './Partials/AnimatedHeroImage.vue';
 
         </div>
 
-<<<<<<< HEAD
-=======
         <div class="absolute bottom-0 -z-10 -right-0 overflow-clip">
           <img class="w-full h-full relative -right-1/2" src="@/assets/images/Decorations.svg" alt="Decorations.svg" />
         </div>
->>>>>>> 893d5da7d76bcc2c2603ea25485a1c865747c760
       </div>
 
 
