@@ -57,14 +57,16 @@ import TheFeatures from '@/components/TheFeatures.vue';
       </div>
 
       <!-- JUMBLETRON -->
-      <div class="mx-auto my-20 bg-primary max-w-7xl rounded-3xl">
-        <div class="flex flex-col items-center px-4 py-24 text-center">
-          <h2 class="text-2xl font-normal tracking-tight text-primary-foreground xl:text-3xl">
-            Secure your intellectual properties! It's worth it.
-          </h2>
+      <div class="mx-auto max-w-7xl">
+        <div class="my-20 bg-primary rounded-3xl">
+          <div class="flex flex-col items-center px-4 py-24 text-center">
+            <h2 class="text-2xl font-normal tracking-tight text-primary-foreground xl:text-3xl">
+              Secure your intellectual properties! It's worth it.
+            </h2>
 
-          <div class="inline-flex w-full mt-8 sm:w-auto">
-            <TertiaryButton class="text-muted-foreground" label="Learn why it's vital" />
+            <div class="inline-flex w-full mt-8 sm:w-auto">
+              <TertiaryButton class="text-muted-foreground" label="Learn why it's vital" />
+            </div>
           </div>
         </div>
       </div>
