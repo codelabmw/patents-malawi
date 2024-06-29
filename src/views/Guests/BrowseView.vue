@@ -17,7 +17,7 @@ const isSelected = ref(false);
     <div class="relative">
       <!-- Sub Navigation Area -->
       <div class="absolute z-30 w-full mb-20 -top-20 border-y border-muted-foreground/10">
-        <div class="relative max-w-7xl bg-background">
+        <div class="relative mx-auto max-w-7xl bg-background">
           <div class="container px-6 py-4 mx-auto md:flex md:justify-between md:items-center">
             <div class="flex items-center justify-between">
               <!-- Search Field -->
@@ -55,7 +55,7 @@ const isSelected = ref(false);
     </div>
 
     <!-- Main -->
-    <main class="block mt-20 max-w-7xl">
+    <main class="block mx-auto mt-20 max-w-7xl">
       <div class="p-8">
         <PatentCard />
       </div>

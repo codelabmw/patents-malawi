@@ -13,7 +13,7 @@ import TheFeatures from '@/components/TheFeatures.vue';
       <NavBar />
 
       <!-- HERO SECTION -->
-      <div class="my-2 relative w-full bg-[url('@/assets/images/Decorations.svg')]">
+      <div class="my-2 relative w-full bg-[url('@/assets/images/Decorations.svg')] bg-no-repeat">
         <!-- bg-right-bottom bg-[length:800px_800px] bg-no-repeat w-full h-full -->
 
         <div class="container px-6 py-16 mx-auto max-w-7xl">
@@ -52,7 +52,7 @@ import TheFeatures from '@/components/TheFeatures.vue';
 
 
       <!-- FEATURES SECTION -->
-      <div class="my-12 max-w-7xl">
+      <div class="mx-auto my-12 max-w-7xl">
         <TheFeatures />
       </div>
 
