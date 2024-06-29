@@ -23,14 +23,14 @@ import AnimatedHeroImage from './Partials/AnimatedHeroImage.vue';
                 <h1 class="text-3xl font-medium text-primary lg:text-4xl xl:text-6xl">Secure, transparent
                   and to be trusted!</h1>
 
-                <p class="mt-3 text-sm lg:text-lg font-light text-muted-foreground/80">Reserve ownership rights of your
+                <p class="mt-3 text-sm font-light lg:text-lg text-muted-foreground/80">Reserve ownership rights of your
                   intellectual
                   properties
                   knowing
                   they're safe
                   and secure with the latest blockchain technlogy.</p>
 
-                <div class="flex items-center space-x-4 mt-4">
+                <div class="flex items-center mt-4 space-x-4">
                   <PrimaryButton label="Browse patents" href="/browse" />
                   <SecondaryButton label="Learn how it works" href="/how-it-works" />
                 </div>
@@ -44,7 +44,7 @@ import AnimatedHeroImage from './Partials/AnimatedHeroImage.vue';
         </div>
 
         <div class="absolute bottom-0 -z-10 -right-0 overflow-clip">
-          <img class="w-full h-full relative -right-1/2" src="@/assets/images/Decorations.svg" alt="Decorations.svg" />
+          <img class="relative w-full h-full -right-1/2" src="@/assets/images/Decorations.svg" alt="Decorations.svg" />
         </div>
       </div>
 
