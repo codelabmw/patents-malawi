@@ -4,6 +4,7 @@ import PrimaryButton from '@/components/PrimaryButton.vue';
 import SecondaryButton from '@/components/SecondaryButton.vue';
 import TertiaryButton from '@/components/TertiaryButton.vue';
 import TheFeatures from '@/components/TheFeatures.vue';
+import AnimatedHeroImage from './Partials/AnimatedHeroImage.vue';
 </script>
 
 <template>
@@ -13,7 +14,8 @@ import TheFeatures from '@/components/TheFeatures.vue';
       <NavBar />
 
       <!-- HERO SECTION -->
-      <div class="my-2 relative w-full h-screen bg-[url('@/assets/images/Decorations.svg')] bg-no-repeat">
+      <div
+        class="my-2 relative w-full flex flex-col justify-center h-[85vh] bg-[url('@/assets/images/Decorations.svg')] bg-no-repeat">
         <!-- bg-right-bottom bg-[length:800px_800px] bg-no-repeat w-full h-full -->
 
         <div class="container px-6 py-16 mx-auto max-w-7xl">
@@ -37,10 +39,8 @@ import TheFeatures from '@/components/TheFeatures.vue';
               </div>
             </div>
 
-            <div class="flex items-center justify-center w-full mt-6 lg:mt-0 lg:w-1/2">
-              <img class="w-full h-full lg:max-w-3xl" src="@/assets/images/Light-Bulb-Illustration.svg"
-                alt="Light-Bulb-Illustration.svg" />
-            </div>
+            <AnimatedHeroImage />
+
           </div>
 
         </div>
