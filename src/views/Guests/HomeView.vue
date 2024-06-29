@@ -13,7 +13,7 @@ import TheFeatures from '@/components/TheFeatures.vue';
       <NavBar />
 
       <!-- HERO SECTION -->
-      <div class="my-2 relative w-full bg-[url('@/assets/images/Decorations.svg')] bg-no-repeat">
+      <div class="my-2 relative w-full h-screen bg-[url('@/assets/images/Decorations.svg')] bg-no-repeat">
         <!-- bg-right-bottom bg-[length:800px_800px] bg-no-repeat w-full h-full -->
 
         <div class="container px-6 py-16 mx-auto max-w-7xl">
@@ -57,7 +57,7 @@ import TheFeatures from '@/components/TheFeatures.vue';
       </div>
 
       <!-- JUMBLETRON -->
-      <div class="mx-auto bg-primary w-[90%] my-20 rounded-3xl">
+      <div class="mx-auto my-20 bg-primary max-w-7xl rounded-3xl">
         <div class="flex flex-col items-center px-4 py-24 text-center">
           <h2 class="text-2xl font-normal tracking-tight text-primary-foreground xl:text-3xl">
             Secure your intellectual properties! It's worth it.
