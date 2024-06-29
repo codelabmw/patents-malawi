@@ -2,9 +2,12 @@
 import GhostButton from '@/components/GhostButton.vue';
 import NavBar from '@/components/NavBar.vue';
 import PatentCard from '@/components/PatentCard.vue';
+import UpdateIcon from '@/components/icons/UpdateIcon.vue';
+import { usePatentsStore } from '@/stores/patents';
 import { ref } from 'vue';
 
 const isSelected = ref(false);
+const { patents } = usePatentsStore()
 </script>
 
 <template>
@@ -56,8 +59,19 @@ const isSelected = ref(false);
 
     <!-- Main -->
     <main class="block mx-auto mt-20 max-w-7xl">
-      <div class="p-8">
+      <div v-if="patents.length" class="p-8">
         <PatentCard />
+      </div>
+
+      <div v-else class="w-full h-[70vh] grid place-content-center">
+        <div class="text-center">
+          <div class="grid place-content-center">
+            <UpdateIcon class="text-8xl text-muted-foreground" />
+          </div>
+          <p class="max-w-lg mt-4 text-muted-foreground">
+            Creation of patents feature is still in development, come back soon to check them out and avoid infringements!
+          </p>
+        </div>
       </div>
     </main>
   </div>

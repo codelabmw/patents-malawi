@@ -2,7 +2,6 @@
 import NavBar from '@/components/NavBar.vue';
 import PrimaryButton from '@/components/PrimaryButton.vue';
 import SecondaryButton from '@/components/SecondaryButton.vue';
-import TertiaryButton from '@/components/TertiaryButton.vue';
 import TheFeatures from '@/components/TheFeatures.vue';
 import AnimatedHeroImage from './Partials/AnimatedHeroImage.vue';
 </script>
@@ -14,25 +13,24 @@ import AnimatedHeroImage from './Partials/AnimatedHeroImage.vue';
       <NavBar />
 
       <!-- HERO SECTION -->
-      <div
-        class="my-2 relative w-full flex flex-col justify-center h-[85vh] bg-[url('@/assets/images/Decorations.svg')] bg-no-repeat">
+      <div class="my-2 relative w-full flex flex-col justify-center h-[85vh] bg-no-repeat">
         <!-- bg-right-bottom bg-[length:800px_800px] bg-no-repeat w-full h-full -->
 
         <div class="container px-6 py-16 mx-auto max-w-7xl">
           <div class="items-center lg:flex">
             <div class="w-full lg:w-1/2">
-              <div class="pl-7 lg:max-w-lg">
-                <h1 class="text-3xl font-medium text-primary lg:text-4xl">Secure, transparent
+              <div class="pl-7 lg:max-w-lg xl:max-w-xl">
+                <h1 class="text-3xl font-medium text-primary lg:text-4xl xl:text-6xl">Secure, transparent
                   and to be trusted!</h1>
 
-                <p class="mt-3 text-sm font-light text-muted-foreground/80">Reserve ownership rights of your
+                <p class="mt-3 text-sm lg:text-lg font-light text-muted-foreground/80">Reserve ownership rights of your
                   intellectual
                   properties
                   knowing
                   they're safe
                   and secure with the latest blockchain technlogy.</p>
 
-                <div class="flex items-center space-x-4">
+                <div class="flex items-center space-x-4 mt-4">
                   <PrimaryButton label="Browse patents" href="/browse" />
                   <SecondaryButton label="Learn how it works" href="/how-it-works" />
                 </div>
@@ -45,9 +43,9 @@ import AnimatedHeroImage from './Partials/AnimatedHeroImage.vue';
 
         </div>
 
-        <!-- <div class="absolute bottom-0 -z-10 right-0 w-[40vw]">
-          <img class="w-full h-full" src="@/assets/images/Decorations.svg" alt="Decorations.svg" />
-        </div> -->
+        <div class="absolute bottom-0 -z-10 -right-0 overflow-clip">
+          <img class="w-full h-full relative -right-1/2" src="@/assets/images/Decorations.svg" alt="Decorations.svg" />
+        </div>
       </div>
 
 
@@ -65,7 +63,7 @@ import AnimatedHeroImage from './Partials/AnimatedHeroImage.vue';
             </h2>
 
             <div class="inline-flex w-full mt-8 sm:w-auto">
-              <TertiaryButton class="text-muted-foreground" label="Learn why it's vital" />
+              <SecondaryButton class="text-muted-foreground" label="Learn why it's vital" />
             </div>
           </div>
         </div>
