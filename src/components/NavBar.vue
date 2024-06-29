@@ -3,6 +3,7 @@ import { RouterLink } from 'vue-router'
 import ApplicationLogo from './ApplicationLogo.vue';
 import { ref } from 'vue';
 import InfoBanner from './InfoBanner.vue';
+import { Routes } from '@/router';
 
 const isOpen = ref(false)
 </script>
@@ -13,9 +14,9 @@ const isOpen = ref(false)
     <nav class="relative mx-auto max-w-7xl bg-background">
         <div class="container px-6 py-4 mx-auto md:flex md:justify-between md:items-center">
             <div class="flex items-center justify-between">
-                <a href="/">
+                <RouterLink :to="Routes.home.path">
                     <ApplicationLogo class="w-48" />
-                </a>
+                </RouterLink>
 
                 <!-- Mobile menu button -->
                 <div class="flex lg:hidden">
