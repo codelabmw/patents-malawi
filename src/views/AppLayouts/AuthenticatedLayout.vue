@@ -2,9 +2,12 @@
 import { RouterLink } from 'vue-router'
 import ApplicationLogo from '@/components/ApplicationLogo.vue';
 import { ref } from 'vue';
+import ProfileIcon from '@/components/icons/ProfileIcon.vue';
+import NotificationIcon from '@/components/icons/NotificationIcon.vue';
 
 const isOpen = ref(false)
 const toggleProfile = ref(false)
+const toggleNotification = ref(false)
 </script>
 
 <template>
@@ -54,18 +57,45 @@ const toggleProfile = ref(false)
                     </RouterLink>
                 </div>
 
+                <!-- Notifications dropdown -->
                 <div class="flex justify-center md:block">
-                    <!-- Profile dropdown -->
                     <div class="relative ml-3">
                         <div>
-                            <button type="button" @click="toggleProfile = !toggleProfile"
-                                class="relative flex text-sm bg-gray-800 rounded-full focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800"
+                            <button type="button" @click="toggleNotification = !toggleNotification"
+                                class="relative flex p-1 text-sm rounded-full focus:outline-none focus:ring-2 focus:ring-background focus:ring-offset-2 focus:ring-offset-muted-foreground"
                                 id="user-menu-button" aria-expanded="false" aria-haspopup="true">
                                 <span class="absolute -inset-1.5"></span>
                                 <span class="sr-only">Open user menu</span>
-                                <img class="w-8 h-8 rounded-full"
-                                    src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
-                                    alt="">
+                                <NotificationIcon class="text-xl" />
+                            </button>
+                        </div>
+
+                        <div v-if="toggleNotification"
+                            class="absolute right-0 z-50 w-48 py-1 mt-2 origin-top-right bg-white rounded-md shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none"
+                            role="menu" aria-orientation="vertical" aria-labelledby="user-menu-button" tabindex="-1">
+                            <!-- Active: "bg-gray-100", Not Active: "" -->
+                            <a href="#" class="block px-4 py-2 text-sm text-gray-700" role="menuitem" tabindex="-1"
+                                id="user-menu-item-0">Your Profile</a>
+                            <a href="#" class="block px-4 py-2 text-sm text-gray-700" role="menuitem" tabindex="-1"
+                                id="user-menu-item-1">Settings</a>
+                            <a href="#" class="block px-4 py-2 text-sm text-gray-700" role="menuitem" tabindex="-1"
+                                id="user-menu-item-2">Sign out</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Profile dropdown -->
+                <div class="flex justify-center md:block">
+                    <div class="relative ml-3">
+                        <div>
+                            <button type="button" @click="toggleProfile = !toggleProfile"
+                                class="relative flex p-1 text-sm rounded-full bg-background focus:outline-none focus:ring-2 focus:ring-background focus:ring-offset-2 focus:ring-offset-muted-foreground"
+                                id="user-menu-button" aria-expanded="false" aria-haspopup="true">
+                                <span class="absolute -inset-1.5"></span>
+                                <span class="sr-only">Open user menu</span>
+                                <!-- <ProfileIcon class="text-lg" /> -->
+                                <img class="w-6 h-6 rounded-full"
+                                    src="https://api.iconify.design/teenyicons:anja-outline.svg" alt="">
                             </button>
                         </div>
 
