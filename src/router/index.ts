@@ -3,9 +3,9 @@ import HomeView from '../views/Guests/HomeView.vue'
 import { WalletConnectService } from '@/services/WalletConnectService'
 
 type Route = {
-  path: string,
-  name: string,
-  component: any,
+  path: string
+  name: string
+  component: any
 }
 
 export class Routes {
@@ -51,6 +51,12 @@ export class Routes {
     component: () => import('../views/Dashboard/DashboardView.vue')
   }
 
+  static create: Route = {
+    path: '/dashboard/create',
+    name: 'create',
+    component: () => import('../views/Dashboard/CreateView.vue')
+  }
+
   static all(): Route[] {
     return [
       this.home,
@@ -59,7 +65,8 @@ export class Routes {
       this.terms,
       this.support,
       this.apply,
-      this.dashboard
+      this.dashboard,
+      this.create
     ]
   }
 }

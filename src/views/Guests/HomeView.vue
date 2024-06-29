@@ -16,7 +16,6 @@ import AnimatedHeroImage from './Partials/AnimatedHeroImage.vue';
       <!-- HERO SECTION -->
       <div
         class="my-2 relative w-full flex flex-col justify-center h-[85vh] bg-[url('@/assets/images/Decorations.svg')] bg-no-repeat">
-        <!-- bg-right-bottom bg-[length:800px_800px] bg-no-repeat w-full h-full -->
 
         <div class="container px-6 py-16 mx-auto max-w-7xl">
           <div class="items-center lg:flex">
@@ -45,9 +44,6 @@ import AnimatedHeroImage from './Partials/AnimatedHeroImage.vue';
 
         </div>
 
-        <!-- <div class="absolute bottom-0 -z-10 right-0 w-[40vw]">
-          <img class="w-full h-full" src="@/assets/images/Decorations.svg" alt="Decorations.svg" />
-        </div> -->
       </div>
 
 
