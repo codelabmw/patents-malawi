@@ -53,14 +53,6 @@ document.addEventListener(Connection.DISCONNECTED, () => {
                         class="rounded my-2 text-xs px-2.5 py-2 transition-colors duration-300 transform hover:bg-muted text-muted-foreground md:mx-1 md:my-0">
                         My Patents
                     </RouterLink>
-                    <RouterLink to="/browse" exactActiveClass="text-primary font-medium bg-primary/10 rounded"
-                        class="rounded my-2 text-xs px-2.5 py-2 transition-colors duration-300 transform hover:bg-muted text-muted-foreground md:mx-1 md:my-0">
-                        Browse
-                    </RouterLink>
-                    <RouterLink to="/terms" exactActiveClass="text-primary font-medium bg-primary/10 rounded"
-                        class="rounded my-2 text-xs px-2.5 py-2 transition-colors duration-300 transform hover:bg-muted text-muted-foreground md:mx-1 md:my-0">
-                        Terms &
-                        Policy</RouterLink>
                     <RouterLink to="/support" exactActiveClass="text-primary font-medium bg-primary/10 rounded"
                         class="rounded my-2 text-xs px-2.5 py-2 transition-colors duration-300 transform hover:bg-muted text-muted-foreground md:my-0">
                         Support
@@ -78,18 +70,6 @@ document.addEventListener(Connection.DISCONNECTED, () => {
                                 <span class="sr-only">Open user menu</span>
                                 <NotificationIcon class="text-xl" />
                             </button>
-                        </div>
-
-                        <div v-if="toggleNotification"
-                            class="absolute right-0 z-50 w-48 py-1 mt-2 origin-top-right bg-white rounded-md shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none"
-                            role="menu" aria-orientation="vertical" aria-labelledby="user-menu-button" tabindex="-1">
-                            <!-- Active: "bg-gray-100", Not Active: "" -->
-                            <a href="#" class="block px-4 py-2 text-sm text-gray-700" role="menuitem" tabindex="-1"
-                                id="user-menu-item-0">Your Profile</a>
-                            <a href="#" class="block px-4 py-2 text-sm text-gray-700" role="menuitem" tabindex="-1"
-                                id="user-menu-item-1">Settings</a>
-                            <a href="#" class="block px-4 py-2 text-sm text-gray-700" role="menuitem" tabindex="-1"
-                                id="user-menu-item-2">Sign out</a>
                         </div>
                     </div>
                 </div>

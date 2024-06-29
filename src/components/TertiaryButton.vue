@@ -13,13 +13,13 @@ defineProps({
 
 <template>
     <button v-if="!href"
-        class="w-full px-5 py-3 mt-6 text-xs font-light tracking-wider transition-colors duration-300 transform rounded-lg text-muted-foreground bg-muted lg:w-auto hover:bg-muted/95 focus:outline-none focus:bg-muted/95">{{
+        class="w-full px-5 py-3 mt-6 text-base font-light tracking-wider transition-colors duration-300 transform rounded-lg text-muted-foreground bg-muted lg:w-auto hover:bg-muted/95 focus:outline-none focus:bg-muted/95">{{
             label }}
     </button>
 
     <span v-if="href">
         <RouterLink :to="href!"
-            class="inline-block w-full px-5 py-3 mt-6 text-xs font-light tracking-wider transition-colors duration-300 transform rounded-lg text-muted-foreground bg-muted lg:w-auto hover:bg-muted/95 focus:outline-none focus:bg-muted/95">
+            class="inline-block w-full px-5 py-3 mt-6 text-base font-light tracking-wider transition-colors duration-300 transform rounded-lg text-muted-foreground bg-muted lg:w-auto hover:bg-muted/95 focus:outline-none focus:bg-muted/95">
             {{
                 label }}
         </RouterLink>
