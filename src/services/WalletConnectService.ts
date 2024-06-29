@@ -22,6 +22,7 @@ export enum Connection {
     CONNECTED = 'WALLET_CONNECTED',
     DISCONNECTED = 'WALLET_CDISCONNECTED'
 }
+
 export class WalletConnectService {
     private static _instance: WalletConnectService;
 
@@ -65,7 +66,6 @@ export class WalletConnectService {
     }
 
     public listen(): void {
-
         this.modal.subscribeProvider(state => {
             if (state.isConnected) {
                 document.dispatchEvent(new Event(Connection.CONNECTED))
