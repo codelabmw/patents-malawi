@@ -15,7 +15,7 @@ const loading = ref<boolean>(false)
 const router = useRouter()
 
 document.addEventListener(Connection.CONNECTED, () => {
-    router.push(Routes.dashboard.name)
+    router.push(Routes.intended)
 }, { once: true })
 </script>
 
@@ -29,12 +29,12 @@ document.addEventListener(Connection.CONNECTED, () => {
             </div>
 
             <div class="mt-5 text-center">
-                <h2 class="text-2xl">Authentication</h2>
-                <p class="max-w-3xl mt-6 text-xs">
-                    Patents Malawi uses the blockchain technology to facilitate data management, as such users who want
-                    to apply for patents must have a crypto currency wallet. You can easily get started with <span
-                        class="font-light underline text-primary">MetaMask</span>,
-                    when you're done you can continue with linking your wallet here to apply for patents.
+                <h2 class="text-2xl">Get Connected!</h2>
+                <p class="max-w-4xl mt-6">
+                    Patents Malawi uses blockchain technology to facilitate data management, as such to view <small>(at no cost)</small> and
+                    create patents users must have a crypto currency wallet. You can easily get started with 
+                    <a href="https://metamask.io" class="font-light text-primary hover:underline">MetaMask</a>,
+                    when you're done you can continue with linking your wallet here to view and create patents.
                 </p>
             </div>
 

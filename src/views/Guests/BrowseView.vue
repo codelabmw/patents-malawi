@@ -2,18 +2,26 @@
 import GhostButton from '@/components/GhostButton.vue';
 import PatentCard from '@/components/PatentCard.vue';
 import UpdateIcon from '@/components/icons/UpdateIcon.vue';
-import { usePatentsStore } from '@/stores/patents';
-import { ref } from 'vue';
+import { usePatentsStore, PatentsEvents } from '@/stores/patents';
+import { onMounted, ref } from 'vue';
 import GuestLayout from '../AppLayouts/GuestLayout.vue';
 
 const isSelected = ref(false);
-const { patents } = usePatentsStore()
+const { patents, load } = usePatentsStore()
+const loading = ref<boolean>(true)
+
+onMounted(async () => {
+  document.addEventListener(PatentsEvents.LOADED, () => {
+    loading.value = false
+  })
+
+  load()
+})
 </script>
 
 <template>
 
   <GuestLayout>
-    <!-- MAIN -->
     <div>
       <div class="relative">
         <!-- Sub Navigation Area -->
@@ -46,7 +54,7 @@ const { patents } = usePatentsStore()
               <div :class="[isSelected ? 'translate-x-0 opacity-100 ' : 'opacity-0 -translate-x-full']"
                 class="absolute inset-x-0 z-20 w-full px-6 py-4 transition-all duration-300 ease-in-out bg-background md:mt-0 md:p-0 md:top-0 md:relative md:bg-transparent md:w-auto md:opacity-100 md:translate-x-0 md:flex md:items-center">
                 <div class="flex flex-col items-center md:flex-row">
-                  <GhostButton label="All" :active="true" />
+                  <!-- <GhostButton label="All" :active="true" /> -->
                   <GhostButton label="Filters" />
                 </div>
               </div>
@@ -57,19 +65,31 @@ const { patents } = usePatentsStore()
 
       <!-- Main -->
       <main class="block mx-auto mt-20 max-w-7xl">
-        <div v-if="patents.length" class="p-8">
-          <PatentCard />
+        <div v-if="!loading">
+          <div v-if="patents.length" class="py-8 px-6">
+            <PatentCard />
+          </div>
+
+          <div v-else class="w-full h-[70vh] grid place-content-center">
+            <div class="text-center">
+              <div class="grid place-content-center">
+                <UpdateIcon class="text-6xl text-muted-foreground" />
+              </div>
+              <p class="max-w-lg mt-4 text-muted-foreground">
+                It seems that there are no patents in store yet! Please check with us again.
+              </p>
+            </div>
+          </div>
         </div>
 
-        <div v-else class="w-full h-[70vh] grid place-content-center">
-          <div class="text-center">
-            <div class="grid place-content-center">
-              <UpdateIcon class="text-8xl text-muted-foreground" />
+        <!-- loading state -->
+        <div v-else class="py-10 px-6">
+          <div class="w-full animate-pulse">
+            <div class="grid grid-cols-1 gap-8 xl:gap-6 sm:grid-cols-2 lg:grid-cols-3">
+              <div class="w-full" v-for="i in 9" :key="i">
+                <div class="w-full h-64 bg-muted-foreground/20 rounded-lg"></div>
+              </div>
             </div>
-            <p class="max-w-lg mt-4 text-muted-foreground">
-              Creation of patents feature is still in development, come back soon to check them out and avoid
-              infringements!
-            </p>
           </div>
         </div>
       </main>

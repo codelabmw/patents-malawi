@@ -19,7 +19,7 @@ const modal = useWeb3Modal()
 const router = useRouter()
 
 document.addEventListener(Connection.DISCONNECTED, () => {
-    router.push(Routes.apply.name)
+    router.push(Routes.connect.name)
 }, { once: true })
 
 // Function to handle clicks outside of the dropdowns

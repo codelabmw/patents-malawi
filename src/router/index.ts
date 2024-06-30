@@ -9,13 +9,15 @@ type Route = {
 }
 
 export class Routes {
+  static intended: string
+
   static home: Route = {
     path: '/',
     name: 'home',
     component: HomeView
   }
 
-  static browser: Route = {
+  static browse: Route = {
     path: '/browse',
     name: 'browse',
     component: () => import('../views/Guests/BrowseView.vue')
@@ -39,10 +41,10 @@ export class Routes {
     component: () => import('../views/Guests/SupportView.vue')
   }
 
-  static apply: Route = {
-    path: '/apply',
-    name: 'apply',
-    component: () => import('../views/Guests/ApplyView.vue')
+  static connect: Route = {
+    path: '/connect',
+    name: 'connect',
+    component: () => import('../views/Guests/ConnectView.vue')
   }
 
   static dashboard: Route = {
@@ -72,11 +74,11 @@ export class Routes {
   static all(): Route[] {
     return [
       this.home,
-      this.browser,
+      this.browse,
       this.how_it_works,
       this.terms,
       this.support,
-      this.apply,
+      this.connect,
       this.dashboard,
       this.create,
       this.patent_details,
@@ -92,11 +94,17 @@ const router = createRouter({
 
 router.beforeEach((to, from, next) => {
   if (to.name === Routes.dashboard.name && !WalletConnectService.instance.connected()) {
-    return next(Routes.apply.name)
+    Routes.intended = Routes.dashboard.name
+    return next(Routes.connect.name)
   }
 
-  if (to.name === Routes.apply.name && WalletConnectService.instance.connected()) {
+  if (to.name === Routes.connect.name && WalletConnectService.instance.connected()) {
     return next(Routes.dashboard.name)
+  }
+
+  if (to.name === Routes.browse.name && !WalletConnectService.instance.connected()) {
+    Routes.intended = Routes.browse.name
+    return next(Routes.connect.name)
   }
 
   return next()
