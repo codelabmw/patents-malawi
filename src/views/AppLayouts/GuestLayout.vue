@@ -1,9 +1,10 @@
 <script lang="ts" setup>
 import { RouterLink } from 'vue-router'
-import ApplicationLogo from './ApplicationLogo.vue';
 import { ref } from 'vue';
-import InfoBanner from './InfoBanner.vue';
 import { Routes } from '@/router';
+import InfoBanner from '@/components/InfoBanner.vue';
+import ApplicationLogo from '@/components/ApplicationLogo.vue';
+import AppFooter from '@/components/AppFooter.vue';
 
 const isOpen = ref(false)
 </script>
@@ -71,4 +72,11 @@ const isOpen = ref(false)
             </div>
         </div>
     </nav>
+
+    <!-- Main Page Content Slot -->
+
+    <slot></slot>
+
+    <!-- Application Footer -->
+    <AppFooter />
 </template>

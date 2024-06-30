@@ -8,6 +8,8 @@ import { RouterLink, useRouter } from 'vue-router'
 import { useWeb3Modal } from '@web3modal/ethers/vue';
 import { Connection } from '@/services/WalletConnectService';
 import InfoBanner from '@/components/InfoBanner.vue';
+import { onMounted } from 'vue';
+import { onBeforeUnmount } from 'vue';
 
 const isOpen = ref(false)
 const toggleProfile = ref(false)
@@ -19,6 +21,36 @@ const router = useRouter()
 document.addEventListener(Connection.DISCONNECTED, () => {
     router.push(Routes.apply.name)
 }, { once: true })
+
+// Function to handle clicks outside of the dropdowns
+const handleClickOutside = (event: MouseEvent) => {
+    const notificationButton = document.getElementById('notification-button');
+    const profileButton = document.getElementById('profile-button');
+
+    if (
+        toggleNotification.value &&
+        notificationButton &&
+        !notificationButton.contains(event.target as Node)
+    ) {
+        toggleNotification.value = false;
+    }
+
+    if (
+        toggleProfile.value &&
+        profileButton &&
+        !profileButton.contains(event.target as Node)
+    ) {
+        toggleProfile.value = false;
+    }
+};
+
+onMounted(() => {
+    document.addEventListener('click', handleClickOutside);
+});
+
+onBeforeUnmount(() => {
+    document.removeEventListener('click', handleClickOutside);
+});
 </script>
 
 <template>
@@ -69,11 +101,57 @@ document.addEventListener(Connection.DISCONNECTED, () => {
                         <div>
                             <button type="button" @click="toggleNotification = !toggleNotification"
                                 class="relative flex p-1 text-sm rounded-full focus:outline-none focus:ring-2 focus:ring-background focus:ring-offset-2 focus:ring-offset-muted-foreground"
-                                id="user-menu-button" aria-expanded="false" aria-haspopup="true">
+                                id="notification-button" aria-expanded="false" aria-haspopup="true">
                                 <span class="absolute -inset-1.5"></span>
                                 <span class="sr-only">Open user menu</span>
-                                <NotificationIcon class="text-xl" />
+                                <NotificationIcon class="text-lg" />
                             </button>
+                        </div>
+
+                        <!-- Dropdown menu -->
+                        <div v-if="toggleNotification"
+                            class="absolute right-0 z-20 w-64 mt-2 overflow-hidden origin-top-right bg-white rounded-md shadow-lg sm:w-80 dark:bg-gray-800">
+                            <div class="py-2">
+                                <a href="#"
+                                    class="flex items-center px-4 py-3 -mx-2 transition-colors duration-300 transform border-b border-gray-100 hover:bg-gray-50 dark:hover:bg-gray-700 dark:border-gray-700">
+                                    <img class="flex-shrink-0 object-cover w-8 h-8 mx-1 rounded-full"
+                                        src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=334&q=80"
+                                        alt="avatar" />
+                                    <p class="mx-2 text-sm text-gray-600 dark:text-white"><span class="font-bold"
+                                            href="#">Sara Salah</span> replied on the <span
+                                            class="text-blue-500 hover:underline" href="#">Upload Image</span> artical .
+                                        2m</p>
+                                </a>
+                                <a href="#"
+                                    class="flex items-center px-4 py-3 -mx-2 transition-colors duration-300 transform border-b border-gray-100 hover:bg-gray-50 dark:hover:bg-gray-700 dark:border-gray-700">
+                                    <img class="flex-shrink-0 object-cover w-8 h-8 mx-1 rounded-full"
+                                        src="https://images.unsplash.com/photo-1531427186611-ecfd6d936c79?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=634&q=80"
+                                        alt="avatar" />
+                                    <p class="mx-2 text-sm text-gray-600 dark:text-white"><span class="font-bold"
+                                            href="#">Slick Net</span> start following you . 45m</p>
+                                </a>
+                                <a href="#"
+                                    class="flex items-center px-4 py-3 -mx-2 transition-colors duration-300 transform border-b border-gray-100 hover:bg-gray-50 dark:hover:bg-gray-700 dark:border-gray-700">
+                                    <img class="flex-shrink-0 object-cover w-8 h-8 mx-1 rounded-full"
+                                        src="https://images.unsplash.com/photo-1450297350677-623de575f31c?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=334&q=80"
+                                        alt="avatar" />
+                                    <p class="mx-2 text-sm text-gray-600 dark:text-white"><span class="font-bold"
+                                            href="#">Jane Doe</span> Like Your reply on <span
+                                            class="text-blue-500 hover:underline" href="#">Test with TDD</span> artical
+                                        . 1h</p>
+                                </a>
+                                <a href="#"
+                                    class="flex items-center px-4 py-3 -mx-2 transition-colors duration-300 transform hover:bg-gray-100 dark:hover:bg-gray-700">
+                                    <img class="flex-shrink-0 object-cover w-8 h-8 mx-1 rounded-full"
+                                        src="https://images.unsplash.com/photo-1580489944761-15a19d654956?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=398&q=80"
+                                        alt="avatar" />
+                                    <p class="mx-2 text-sm text-gray-600 dark:text-white"><span class="font-bold"
+                                            href="#">Abigail Bennett</span> start following you . 3h</p>
+                                </a>
+                            </div>
+                            <a href="#"
+                                class="block py-2 font-bold text-center text-white bg-gray-800 dark:bg-gray-700 hover:underline">See
+                                all notifications</a>
                         </div>
                     </div>
                 </div>
@@ -84,11 +162,11 @@ document.addEventListener(Connection.DISCONNECTED, () => {
                         <div>
                             <button type="button" @click="toggleProfile = !toggleProfile"
                                 class="relative flex p-1 text-sm rounded-full bg-background focus:outline-none focus:ring-2 focus:ring-background focus:ring-offset-2 focus:ring-offset-muted-foreground"
-                                id="user-menu-button" aria-expanded="false" aria-haspopup="true">
+                                id="profile-button" aria-expanded="false" aria-haspopup="true">
                                 <span class="absolute -inset-1.5"></span>
                                 <span class="sr-only">Open user menu</span>
                                 <!-- <ProfileIcon class="text-lg" /> -->
-                                <img class="w-6 h-6 rounded-full"
+                                <img class="w-5 h-5 rounded-full"
                                     src="https://api.iconify.design/teenyicons:anja-outline.svg" alt="">
                             </button>
                         </div>
