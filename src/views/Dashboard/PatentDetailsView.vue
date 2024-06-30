@@ -8,8 +8,11 @@ import { ref } from 'vue';
 import DangerButton from '@/components/DangerButton.vue';
 import { RouterLink } from 'vue-router';
 import { Routes } from '@/router';
+import Editor from 'primevue/editor';
 
 const showDocument = ref(true)
+
+const value = ref('Hie there');
 </script>
 
 <template>
@@ -46,7 +49,15 @@ const showDocument = ref(true)
                             </div>
                         </div>
 
-                        <section v-if="showDocument" class="max-w-2xl px-6 py-8 mx-auto bg-white dark:bg-gray-900">
+                        <div v-if="showDocument">
+                            <Editor v-model="value" editorStyle="min-height: 320px; border: none;">
+                                <template v-slot:toolbar>
+                                    <span class="clean">
+                                    </span>
+                                </template>
+                            </Editor>
+                        </div>
+                        <!-- <section v-if="showDocument" class="max-w-2xl px-6 py-8 mx-auto bg-white dark:bg-gray-900">
                             <header>
                                 <a href="#">
                                     <img class="w-auto h-7 sm:h-8" src="https://merakiui.com/images/full-logo.svg"
@@ -152,7 +163,7 @@ const showDocument = ref(true)
                                 <p class="mt-3 text-gray-500 dark:text-gray-400">© {{ new Date().getFullYear() }} Meraki
                                     UI. All Rights Reserved.</p>
                             </footer>
-                        </section>
+                        </section> -->
 
 
                         <!-- Submit button -->
@@ -185,3 +196,13 @@ const showDocument = ref(true)
         </div>
     </AuthenticatedLayout>
 </template>
+
+<style scoped>
+.custom-editor .ql-container {
+    border: none !important;
+}
+
+.custom-editor .ql-toolbar {
+    display: none !important;
+}
+</style>

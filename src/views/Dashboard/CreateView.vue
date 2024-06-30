@@ -70,7 +70,7 @@ const value = ref('');
                             <div class="card">
                                 <label for="patent_about" class="block my-4 text-sm font-medium leading-6">Patent
                                     Description <span class="text-accent">*</span></label>
-                                <Editor v-model="value" editorStyle="height: 320px">
+                                <Editor v-model="value" editorStyle="height: 320px;">
                                     <template v-slot:toolbar>
                                         <span class="ql-formats">
                                             <select class="ql-header">
