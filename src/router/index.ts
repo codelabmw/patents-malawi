@@ -65,6 +65,12 @@ export class Routes {
     component: () => import('../views/Dashboard/PatentDetailsView.vue')
   }
 
+  static edit_patent: Route = {
+    path: '/dashboard/patent/edit',
+    name: 'patent_edit',
+    component: () => import('../views/Dashboard/EditPatentView.vue')
+  }
+
   static profile: Route = {
     path: '/dashboard/profile',
     name: 'profile',
@@ -82,7 +88,8 @@ export class Routes {
       this.dashboard,
       this.create,
       this.patent_details,
-      this.profile
+      this.profile,
+      this.edit_patent
     ]
   }
 }
