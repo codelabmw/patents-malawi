@@ -1,19 +1,17 @@
 <script setup lang="ts">
-import InfoBanner from '@/components/InfoBanner.vue';
 import AuthenticatedLayout from '../AppLayouts/AuthenticatedLayout.vue';
 import { ref } from 'vue';
 import GhostButton from '@/components/GhostButton.vue';
 import PatentCard from '@/components/PatentCard.vue';
 import { usePatentsStore } from '@/stores/patents';
 import UpdateIcon from '@/components/icons/UpdateIcon.vue';
+import { Routes } from '@/router';
 
 const isSelected = ref(false);
 const { patents } = usePatentsStore()
 </script>
 
 <template>
-    <InfoBanner
-        msg="The application is still in alpha and as such should not be considered as the end product and be known that it will move to a permanent domain!" />
     <AuthenticatedLayout>
         <div>
             <div class="relative">
@@ -56,7 +54,7 @@ const { patents } = usePatentsStore()
                                 </div>
 
                                 <div class="flex justify-center md:block">
-                                    <RouterLink to="/apply"
+                                    <RouterLink :to="Routes.create.path"
                                         class="px-4 py-2 text-xs transition-colors duration-300 transform rounded-md bg-primary text-primary-foreground md:my-0">
                                         Create
                                     </RouterLink>

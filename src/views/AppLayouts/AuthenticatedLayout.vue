@@ -7,6 +7,7 @@ import { Routes } from '@/router';
 import { RouterLink, useRouter } from 'vue-router'
 import { useWeb3Modal } from '@web3modal/ethers/vue';
 import { Connection } from '@/services/WalletConnectService';
+import InfoBanner from '@/components/InfoBanner.vue';
 
 const isOpen = ref(false)
 const toggleProfile = ref(false)
@@ -21,6 +22,9 @@ document.addEventListener(Connection.DISCONNECTED, () => {
 </script>
 
 <template>
+    <InfoBanner
+        msg="The application is still in alpha and as such should not be considered as the end product and be known that it will move to a permanent domain!" />
+
     <nav class="relative mx-auto max-w-7xl bg-background">
         <div class="container px-6 py-4 mx-auto md:flex md:justify-between md:items-center">
             <div class="flex items-center justify-between">
@@ -99,7 +103,7 @@ document.addEventListener(Connection.DISCONNECTED, () => {
                                 id="user-menu-item-1">Settings</a>
                             <hr>
                             <button @click="modal.open()"
-                                class="w-full block mt-2 px-4 py-2 text-left text-sm text-muted-foreground hover:bg-muted">
+                                class="block w-full px-4 py-2 mt-2 text-sm text-left text-muted-foreground hover:bg-muted">
                                 Wallet
                             </button>
                         </div>
