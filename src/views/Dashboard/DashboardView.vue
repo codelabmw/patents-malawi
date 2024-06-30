@@ -1,15 +1,36 @@
 <script setup lang="ts">
 import AuthenticatedLayout from '../AppLayouts/AuthenticatedLayout.vue';
-import { ref } from 'vue';
 import GhostButton from '@/components/GhostButton.vue';
 import PatentCard from '@/components/PatentCard.vue';
-import { usePatentsStore } from '@/stores/patents';
 import UpdateIcon from '@/components/icons/UpdateIcon.vue';
+
+import { onMounted, ref } from 'vue';
 import { Routes } from '@/router';
 import { RouterLink } from 'vue-router';
+import type { Patent } from '@/types';
+import { BrowserProvider, Contract, type Eip1193Provider, type JsonRpcSigner } from 'ethers';
+import { Contracts, WalletConnectService } from '@/services/WalletConnectService';
 
 const isSelected = ref(false);
-const { patents } = usePatentsStore()
+const patents = ref<Array<Patent>>([])
+const loading = ref<boolean>(true)
+
+let provider: Eip1193Provider | undefined
+let signer: JsonRpcSigner
+let patents_contract: Contract
+
+onMounted(async () => {
+  // initalize variables
+  provider = WalletConnectService.instance.modal.getWalletProvider()
+  signer = await (new BrowserProvider(provider!)).getSigner()
+  patents_contract = new Contract(Contracts.Patents.address, Contracts.Patents.abi, signer)
+
+  load().then(() => loading.value = false)
+})
+
+async function load() {
+  patents.value = await patents_contract.mine()
+}
 </script>
 
 <template>
@@ -23,8 +44,8 @@ const { patents } = usePatentsStore()
                             <div class="flex items-center justify-between">
                                 <!-- Search Field -->
                                 <input id="patents" name="patents" type="search" autocomplete="patents" required
-                                    class="min-w-0 flex-auto rounded-xl border-0 bg-muted-foreground/15 px-3.5 pt-1.5 pb-2 placeholder:text-[.65rem] text-muted-foreground shadow-sm sm:text-sm sm:leading-6"
-                                    placeholder="Search patents malawi">
+                                    class="min-w-0 flex-auto rounded-xl border-0 bg-muted-foreground/15 px-3.5 pt-1.5 pb-2 placeholder:text-[.65rem] text-muted-foreground shadow-sm sm:text-sm sm:leading-6 focus:outline-none focus:ring-2 focus:ring-primary/40"
+                                    placeholder="Search">
 
                                 <!-- Mobile menu button -->
                                 <div class="flex lg:hidden">
@@ -67,23 +88,42 @@ const { patents } = usePatentsStore()
             </div>
 
             <!-- Main -->
-            <main class="w-full mx-auto mt-20 max-w-7xl">
-                <RouterLink :to="Routes.patent_details.path">
-                    <PatentCard />
-                </RouterLink>
-                <div v-if="patents.length" class="p-8">
-                    <PatentCard />
+            <main class="block mx-auto mt-20 max-w-7xl">
+                <div v-if="!loading">
+                    <div v-if="patents.length" class="min-h-screen py-8 px-6">
+                        <div class="grid grid-cols-1 gap-8 xl:gap-6 sm:grid-cols-2 lg:grid-cols-3">
+                            <div class="w-full" v-for="(patent, i) in patents" :key="i">
+                                <PatentCard :patent="patent" />
+                            </div>
+                        </div>
+                    </div>
+
+                    <div v-else class="w-full h-[70vh] grid place-content-center">
+                        <div class="text-center">
+                            <div class="grid place-content-center">
+                                <UpdateIcon class="text-6xl text-muted-foreground" />
+                            </div>
+                            <p class="max-w-lg mt-4 text-muted-foreground">
+                                It seems that you don't have any patents! Created patents will appear here.
+                            </p>
+                            <div class="mt-6">
+                                <RouterLink :to="Routes.create.path"
+                                    class="px-4 py-2 text-base transition-colors duration-300 transform rounded-md bg-primary text-primary-foreground md:my-0">
+                                    Create Patent
+                                </RouterLink>
+                            </div>
+                        </div>
+                    </div>
                 </div>
 
-                <div v-else class="w-full h-[70vh] grid place-content-center">
-                    <div class="text-center">
-                        <div class="grid place-content-center">
-                            <UpdateIcon class="text-8xl text-muted-foreground" />
+                <!-- loading state -->
+                <div v-else class="py-10 px-6">
+                    <div class="w-full animate-pulse">
+                        <div class="grid grid-cols-1 gap-8 xl:gap-6 sm:grid-cols-2 lg:grid-cols-3">
+                            <div class="w-full" v-for="i in 9" :key="i">
+                                <div class="w-full h-64 bg-muted-foreground/20 rounded-lg"></div>
+                            </div>
                         </div>
-                        <p class="max-w-lg mt-4 text-muted-foreground">
-                            Creation of patents feature is still in development, come back soon to create your first
-                            patent!
-                        </p>
                     </div>
                 </div>
             </main>

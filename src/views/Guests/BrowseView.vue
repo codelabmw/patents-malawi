@@ -2,21 +2,38 @@
 import GhostButton from '@/components/GhostButton.vue';
 import PatentCard from '@/components/PatentCard.vue';
 import UpdateIcon from '@/components/icons/UpdateIcon.vue';
-import { usePatentsStore, PatentsEvents } from '@/stores/patents';
-import { onMounted, ref } from 'vue';
 import GuestLayout from '../AppLayouts/GuestLayout.vue';
 
-const isSelected = ref(false);
-const { patents, load } = usePatentsStore()
+import type { Patent } from '@/types';
+import { Contracts, WalletConnectService } from '@/services/WalletConnectService';
+import { BrowserProvider, Contract, JsonRpcSigner, type Eip1193Provider } from 'ethers';
+import { onMounted, ref } from 'vue';
+
+const isSelected = ref(false)
+
+const patents = ref<Array<Patent>>([])
 const loading = ref<boolean>(true)
 
-onMounted(async () => {
-  document.addEventListener(PatentsEvents.LOADED, () => {
-    loading.value = false
-  })
+let provider: Eip1193Provider | undefined
+let signer: JsonRpcSigner
+let patents_contract: Contract
 
-  load()
+onMounted(async () => {
+  // initalize variables
+  provider = WalletConnectService.instance.modal.getWalletProvider()
+  signer = await (new BrowserProvider(provider!)).getSigner()
+  patents_contract = new Contract(Contracts.Patents.address, Contracts.Patents.abi, signer)
+
+  load().then(() => loading.value = false)
 })
+
+async function load(limit?: number, offset?: number) {
+  limit = limit ?? await patents_contract.count()
+  offset = offset ?? 1
+
+  const _loaded = await patents_contract.some(limit, offset)
+  patents.value.push(..._loaded)
+}
 </script>
 
 <template>
@@ -66,8 +83,12 @@ onMounted(async () => {
       <!-- Main -->
       <main class="block mx-auto mt-20 max-w-7xl">
         <div v-if="!loading">
-          <div v-if="patents.length" class="py-8 px-6">
-            <PatentCard />
+          <div v-if="patents.length" class="min-h-screen py-8 px-6">
+            <div class="grid grid-cols-1 gap-8 xl:gap-6 sm:grid-cols-2 lg:grid-cols-3">
+              <div class="w-full" v-for="(patent, i) in patents" :key="i">
+                <PatentCard :patent="patent" />
+              </div>
+            </div>
           </div>
 
           <div v-else class="w-full h-[70vh] grid place-content-center">
@@ -76,7 +97,7 @@ onMounted(async () => {
                 <UpdateIcon class="text-6xl text-muted-foreground" />
               </div>
               <p class="max-w-lg mt-4 text-muted-foreground">
-                It seems that there are no patents in store yet! Please check with us again.
+                It seems that there are no patents available yet! Please check with us again.
               </p>
             </div>
           </div>
