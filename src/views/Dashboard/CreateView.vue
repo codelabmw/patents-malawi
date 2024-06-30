@@ -60,7 +60,7 @@ const value = ref('');
                                 <label for="category" class="block text-sm font-medium leading-6 ">Category</label>
                                 <div class="mt-2">
                                     <select id="category" name="category" autocomplete="category-name"
-                                        class="block w-full rounded-md border-0 py-1.5 shadow-sm ring-1 ring-inset ring-muted-foreground/40 focus:ring-2 focus:ring-inset focus:ring-primary sm:max-w-xs sm:text-sm sm:leading-6">
+                                        class="block w-full rounded-md border-0 py-1.5 shadow-sm ring-1 ring-inset ring-muted-foreground/40 focus:ring-2 focus:ring-inset focus:ring-ring sm:max-w-xs sm:text-sm sm:leading-6">
                                         <option>Category name</option>
                                         <option>Category name</option>
                                         <option>Category name</option>
