@@ -52,9 +52,21 @@ export class Routes {
   }
 
   static create: Route = {
-    path: '/dashboard/create',
+    path: '/dashboard/patent/create',
     name: 'create',
     component: () => import('../views/Dashboard/CreateView.vue')
+  }
+
+  static patent_details: Route = {
+    path: '/dashboard/patent/details',
+    name: 'patent_details',
+    component: () => import('../views/Dashboard/PatentDetailsView.vue')
+  }
+
+  static profile: Route = {
+    path: '/dashboard/profile',
+    name: 'profile',
+    component: () => import('../views/Dashboard/ProfileView.vue')
   }
 
   static all(): Route[] {
@@ -66,7 +78,9 @@ export class Routes {
       this.support,
       this.apply,
       this.dashboard,
-      this.create
+      this.create,
+      this.patent_details,
+      this.profile
     ]
   }
 }

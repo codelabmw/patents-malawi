@@ -6,6 +6,7 @@ import PatentCard from '@/components/PatentCard.vue';
 import { usePatentsStore } from '@/stores/patents';
 import UpdateIcon from '@/components/icons/UpdateIcon.vue';
 import { Routes } from '@/router';
+import { RouterLink } from 'vue-router';
 
 const isSelected = ref(false);
 const { patents } = usePatentsStore()
@@ -67,6 +68,9 @@ const { patents } = usePatentsStore()
 
             <!-- Main -->
             <main class="w-full mx-auto mt-20 max-w-7xl">
+                <RouterLink :to="Routes.patent_details.path">
+                    <PatentCard />
+                </RouterLink>
                 <div v-if="patents.length" class="p-8">
                     <PatentCard />
                 </div>
