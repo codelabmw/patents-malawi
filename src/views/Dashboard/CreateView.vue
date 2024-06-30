@@ -25,22 +25,7 @@ const value = ref('');
                             so that anyone who has the same idea as yours is notified to make informed decisions.</p>
 
                         <form>
-                            <div>
-                                <label for="username" class="block text-sm font-medium leading-6">Inventor
-                                    Name <span class="text-accent">*</span>
-                                </label>
-                                <div class="mt-4">
-                                    <div
-                                        class="flex rounded-md shadow-sm ring-1 ring-inset ring-muted-foreground/40 focus-within:ring-2 focus-within:ring-inset focus-within:ring-primary sm:max-w-md">
-                                        <span
-                                            class="flex items-center pl-3 select-none text-muted-foreground/80 sm:text-sm">Full
-                                            offical name/</span>
-                                        <input type="text" name="username" id="username" autocomplete="username"
-                                            class="block flex-1 border-0 bg-transparent py-1.5 pl-1 placeholder:text-muted-foreground focus:ring-0 sm:text-sm sm:leading-6"
-                                            placeholder="Jane Smith" required>
-                                    </div>
-                                </div>
-                            </div>
+
                             <div class="mt-4">
                                 <label for="patent_title" class="block text-sm font-medium leading-6">Patent
                                     Title <span class="text-accent">*</span></label>

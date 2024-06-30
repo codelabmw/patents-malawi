@@ -33,13 +33,12 @@ import PrimaryButton from '@/components/PrimaryButton.vue';
                                 </div>
                             </div>
                             <div class="mt-4">
-                                <label for="patent_title" class="block text-sm font-medium leading-6">Email</label>
+                                <label for="email" class="block text-sm font-medium leading-6">Email</label>
                                 <div class="mt-4">
                                     <div
                                         class="flex rounded-md shadow-sm ring-1 ring-inset ring-muted-foreground/40 focus-within:ring-2 focus-within:ring-inset focus-within:ring-primary sm:max-w-md">
 
-                                        <input type="text" name="patent_title" id="patent_title"
-                                            autocomplete="patent_title"
+                                        <input type="email" name="email" id="email" autocomplete="email"
                                             class="block flex-1 border-0 bg-transparent py-1.5 pl-3 placeholder:text-muted-foreground/70 focus:ring-0 sm:text-sm sm:leading-6"
                                             placeholder="example@email.com" />
                                     </div>
