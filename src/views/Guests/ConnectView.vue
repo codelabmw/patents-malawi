@@ -33,7 +33,7 @@ document.addEventListener(Connection.CONNECTED, () => {
                 <p class="max-w-4xl mt-6">
                     Patents Malawi uses blockchain technology to facilitate data management, as such to view <small>(at no cost)</small> and
                     create patents users must have a crypto currency wallet. You can easily get started with 
-                    <a href="https://metamask.io" class="font-light text-primary hover:underline">MetaMask</a>,
+                    <a href="https://metamask.io" target="_blank" class="font-light text-primary hover:underline">MetaMask</a>,
                     when you're done you can continue with linking your wallet here to view and create patents.
                 </p>
             </div>
