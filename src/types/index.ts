@@ -5,7 +5,8 @@ export type Patent = {
     body: string,
     created_at: bigint,
     updated_at: bigint,
-    category_id: bigint,
-    tags: bigint[],
+    category: string,
+    tags: string[],
+    user: string,
     author: string,
 }

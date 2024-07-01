@@ -5,8 +5,11 @@ import { Routes } from '@/router';
 import InfoBanner from '@/components/InfoBanner.vue';
 import ApplicationLogo from '@/components/ApplicationLogo.vue';
 import AppFooter from '@/components/AppFooter.vue';
+import { computed } from 'vue';
+import { WalletConnectService } from '@/services/WalletConnectService';
 
 const isOpen = ref(false)
+const connected = computed(() => WalletConnectService.instance.connected())
 </script>
 
 <template>
@@ -64,9 +67,13 @@ const isOpen = ref(false)
                 </div>
 
                 <div class="flex justify-center md:block">
-                    <RouterLink :to="Routes.connect.path"
+                    <RouterLink v-if="!connected" :to="Routes.connect.path"
                         class="px-4 py-2 text-sm transition-colors duration-300 transform rounded-md bg-primary text-primary-foreground md:my-0">
                         Create patent
+                    </RouterLink>
+                    <RouterLink v-else :to="Routes.dashboard.path"
+                        class="px-4 py-2 text-sm transition-colors duration-300 transform rounded-md bg-primary text-primary-foreground md:my-0">
+                        Dashboard
                     </RouterLink>
                 </div>
             </div>

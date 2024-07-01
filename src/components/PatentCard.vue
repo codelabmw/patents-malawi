@@ -6,9 +6,9 @@ defineProps<{ patent: Patent }>()
 </script>
 
 <template>
-    <div class="w-full max-w-sm px-4 py-3 border rounded-xl bg-background">
+    <div class="w-full max-w-sm px-4 py-3 border rounded-xl bg-background cursor-pointer">
         <div class="flex items-center justify-end">
-            <!-- <span class="px-3 py-1 text-xs uppercase rounded-full text-primary bg-primary/20">psychology</span> -->
+            <span class="px-3 py-1 text-xs uppercase rounded-full text-primary bg-primary/20">{{ patent.category }}</span>
         </div>
 
         <div>

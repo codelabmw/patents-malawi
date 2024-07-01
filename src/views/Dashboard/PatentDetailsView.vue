@@ -9,6 +9,7 @@ import DangerButton from '@/components/DangerButton.vue';
 import { RouterLink } from 'vue-router';
 import { Routes } from '@/router';
 import Editor from 'primevue/editor';
+import UnderDevelopment from '@/components/UnderDevelopment.vue';
 
 const showDocument = ref(true)
 
@@ -17,7 +18,7 @@ const value = ref('Hie there');
 
 <template>
     <AuthenticatedLayout>
-        <div class="relative">
+        <div v-show="false" class="relative">
             <div class="absolute z-30 w-full border-b -top-8 border-muted-foreground/10">
             </div>
 
@@ -193,6 +194,10 @@ const value = ref('Hie there');
                     </form>
                 </div>
             </main>
+        </div>
+
+        <div class="max-w-7xl mx-auto">
+            <UnderDevelopment />
         </div>
     </AuthenticatedLayout>
 </template>

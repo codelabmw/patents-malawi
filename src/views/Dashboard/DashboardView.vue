@@ -93,7 +93,9 @@ async function load() {
                     <div v-if="patents.length" class="min-h-screen py-8 px-6">
                         <div class="grid grid-cols-1 gap-8 xl:gap-6 sm:grid-cols-2 lg:grid-cols-3">
                             <div class="w-full" v-for="(patent, i) in patents" :key="i">
-                                <PatentCard :patent="patent" />
+                                <RouterLink :to="`/dashboard/patents/${patent.id}`">
+                                    <PatentCard :patent="patent" />
+                                </RouterLink>
                             </div>
                         </div>
                     </div>

@@ -23,6 +23,12 @@ export class Routes {
     component: () => import('../views/Guests/BrowseView.vue')
   }
 
+  static show: Route = {
+    path: '/browse/:patent',
+    name: 'show',
+    component: () => import('../views/Guests/PatentDetailsView.vue')
+  }
+
   static how_it_works: Route = {
     path: '/how-it-works',
     name: 'how-it-works',
@@ -54,13 +60,13 @@ export class Routes {
   }
 
   static create: Route = {
-    path: '/dashboard/patent/create',
+    path: '/dashboard/patents/create',
     name: 'create',
     component: () => import('../views/Dashboard/CreateView.vue')
   }
 
   static patent_details: Route = {
-    path: '/dashboard/patent/details',
+    path: '/dashboard/patents/:patent',
     name: 'patent_details',
     component: () => import('../views/Dashboard/PatentDetailsView.vue')
   }
@@ -81,6 +87,7 @@ export class Routes {
     return [
       this.home,
       this.browse,
+      this.show,
       this.how_it_works,
       this.terms,
       this.support,
@@ -89,7 +96,7 @@ export class Routes {
       this.create,
       this.patent_details,
       this.profile,
-      this.edit_patent
+      this.edit_patent,
     ]
   }
 }

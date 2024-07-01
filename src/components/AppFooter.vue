@@ -3,9 +3,9 @@ import ApplicationLogo from './ApplicationLogo.vue';
 </script>
 
 <template>
-    <footer class="px-20 pt-20 border-t bg-background border-muted-foreground/20">
+    <footer class="px-20  border-t bg-background border-muted-foreground/20">
         <div class="container flex flex-col items-center justify-between p-6 mx-auto space-y-4">
-            <div class="w-full mb-14 md:flex md:items-center md:justify-between">
+            <!-- <div class="w-full mb-14 md:flex md:items-center md:justify-between">
                 <h1 class="text-xl font-semibold tracking-tight md:mx-3 xl:text-2xl">
                     Subscribe our newsletter to get updates.</h1>
 
@@ -21,12 +21,12 @@ import ApplicationLogo from './ApplicationLogo.vue';
                         </svg>
                     </a>
                 </div>
-            </div>
+            </div> -->
 
             <div class="flex items-center justify-between w-full">
                 <!-- App Logo -->
                 <RouterLink to="/">
-                    <ApplicationLogo class="w-[15vw]" />
+                    <ApplicationLogo class="w-[10vw]" />
                 </RouterLink>
 
                 <p class="text-sm text-muted-foreground">© Copyright {{ new Date().getFullYear() }}. All Rights

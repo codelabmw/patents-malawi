@@ -102,14 +102,19 @@ export class Contracts {
                         "type": "string"
                     },
                     {
-                        "internalType": "uint256",
-                        "name": "_category_id",
-                        "type": "uint256"
+                        "internalType": "string",
+                        "name": "_category",
+                        "type": "string"
                     },
                     {
-                        "internalType": "uint256[]",
+                        "internalType": "string[]",
                         "name": "_tags",
-                        "type": "uint256[]"
+                        "type": "string[]"
+                    },
+                    {
+                        "internalType": "string",
+                        "name": "_user",
+                        "type": "string"
                     }
                 ],
                 "name": "add",
@@ -166,14 +171,14 @@ export class Contracts {
                         "type": "string"
                     },
                     {
-                        "internalType": "uint256",
-                        "name": "_category_id",
-                        "type": "uint256"
+                        "internalType": "string",
+                        "name": "_category",
+                        "type": "string"
                     },
                     {
-                        "internalType": "uint256[]",
+                        "internalType": "string[]",
                         "name": "_tags",
-                        "type": "uint256[]"
+                        "type": "string[]"
                     }
                 ],
                 "name": "update",
@@ -307,14 +312,19 @@ export class Contracts {
                                 "type": "uint256"
                             },
                             {
-                                "internalType": "uint256",
-                                "name": "category_id",
-                                "type": "uint256"
+                                "internalType": "string",
+                                "name": "category",
+                                "type": "string"
                             },
                             {
-                                "internalType": "uint256[]",
+                                "internalType": "string[]",
                                 "name": "tags",
-                                "type": "uint256[]"
+                                "type": "string[]"
+                            },
+                            {
+                                "internalType": "string",
+                                "name": "user",
+                                "type": "string"
                             },
                             {
                                 "internalType": "address",
@@ -367,14 +377,19 @@ export class Contracts {
                                 "type": "uint256"
                             },
                             {
-                                "internalType": "uint256",
-                                "name": "category_id",
-                                "type": "uint256"
+                                "internalType": "string",
+                                "name": "category",
+                                "type": "string"
                             },
                             {
-                                "internalType": "uint256[]",
+                                "internalType": "string[]",
                                 "name": "tags",
-                                "type": "uint256[]"
+                                "type": "string[]"
+                            },
+                            {
+                                "internalType": "string",
+                                "name": "user",
+                                "type": "string"
                             },
                             {
                                 "internalType": "address",
@@ -464,14 +479,19 @@ export class Contracts {
                                 "type": "uint256"
                             },
                             {
-                                "internalType": "uint256",
-                                "name": "category_id",
-                                "type": "uint256"
+                                "internalType": "string",
+                                "name": "category",
+                                "type": "string"
                             },
                             {
-                                "internalType": "uint256[]",
+                                "internalType": "string[]",
                                 "name": "tags",
-                                "type": "uint256[]"
+                                "type": "string[]"
+                            },
+                            {
+                                "internalType": "string",
+                                "name": "user",
+                                "type": "string"
                             },
                             {
                                 "internalType": "address",

@@ -48,8 +48,8 @@ async function load(limit?: number, offset?: number) {
               <div class="flex items-center justify-between">
                 <!-- Search Field -->
                 <input id="patents" name="patents" type="search" autocomplete="patents" required
-                  class="min-w-0 flex-auto rounded-xl border-0 bg-muted-foreground/15 px-3.5 pt-1.5 pb-2 placeholder:text-[.65rem] text-muted-foreground shadow-sm sm:text-sm sm:leading-6"
-                  placeholder="Search patents malawi">
+                  class="min-w-0 flex-auto rounded-xl border-0 bg-muted-foreground/15 px-3.5 pt-1.5 pb-2 placeholder:text-[.65rem] text-muted-foreground shadow-sm sm:text-sm sm:leading-6 focus:outline-none focus:ring-2 focus:ring-primary/40"
+                  placeholder="Search">
 
                 <!-- Mobile menu button -->
                 <div class="flex lg:hidden">
@@ -86,7 +86,9 @@ async function load(limit?: number, offset?: number) {
           <div v-if="patents.length" class="min-h-screen py-8 px-6">
             <div class="grid grid-cols-1 gap-8 xl:gap-6 sm:grid-cols-2 lg:grid-cols-3">
               <div class="w-full" v-for="(patent, i) in patents" :key="i">
-                <PatentCard :patent="patent" />
+                <RouterLink :to="`/browse/${patent.id}`">
+                  <PatentCard :patent="patent" />
+                </RouterLink>
               </div>
             </div>
           </div>

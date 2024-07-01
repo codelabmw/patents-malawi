@@ -85,73 +85,33 @@ onBeforeUnmount(() => {
             <div :class="[isOpen ? 'translate-x-0 opacity-100 ' : 'opacity-0 -translate-x-full']"
                 class="absolute inset-x-0 z-50 w-full px-6 py-4 transition-all duration-300 ease-in-out bg-background md:mt-0 md:p-0 md:top-0 md:relative md:bg-transparent md:w-auto md:opacity-100 md:translate-x-0 md:flex md:items-center">
                 <div class="flex flex-col md:flex-row md:mx-6">
-                    <RouterLink to="/dashboard" exactActiveClass="text-primary font-medium bg-primary/10 rounded"
+                    <RouterLink :to="Routes.dashboard.path" exactActiveClass="text-primary font-medium bg-primary/10 rounded"
                         class="rounded my-2 text-xs px-2.5 py-2 transition-colors duration-300 transform hover:bg-muted text-muted-foreground md:mx-1 md:my-0">
                         My Patents
                     </RouterLink>
-                    <RouterLink to="/support" exactActiveClass="text-primary font-medium bg-primary/10 rounded"
+                    <!-- <RouterLink to="/support" exactActiveClass="text-primary font-medium bg-primary/10 rounded"
                         class="rounded my-2 text-xs px-2.5 py-2 transition-colors duration-300 transform hover:bg-muted text-muted-foreground md:my-0">
                         Support
-                    </RouterLink>
+                    </RouterLink> -->
                 </div>
 
                 <!-- Notifications dropdown -->
                 <div class="flex justify-center md:block">
-                    <div class="relative ml-3">
+                    <div class="relative">
                         <div>
                             <button type="button" @click="toggleNotification = !toggleNotification"
                                 class="relative flex p-1 text-sm rounded-full focus:outline-none focus:ring-2 focus:ring-background focus:ring-offset-2 focus:ring-offset-muted-foreground"
                                 id="notification-button" aria-expanded="false" aria-haspopup="true">
                                 <span class="absolute -inset-1.5"></span>
-                                <span class="sr-only">Open user menu</span>
+                                <span class="sr-only">Open notifications panel</span>
                                 <NotificationIcon class="text-lg" />
                             </button>
                         </div>
 
                         <!-- Dropdown menu -->
                         <div v-if="toggleNotification"
-                            class="absolute right-0 z-20 w-64 mt-2 overflow-hidden origin-top-right bg-white rounded-md shadow-lg sm:w-80 dark:bg-gray-800">
-                            <div class="py-2">
-                                <a href="#"
-                                    class="flex items-center px-4 py-3 -mx-2 transition-colors duration-300 transform border-b border-gray-100 hover:bg-gray-50 dark:hover:bg-gray-700 dark:border-gray-700">
-                                    <img class="flex-shrink-0 object-cover w-8 h-8 mx-1 rounded-full"
-                                        src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=334&q=80"
-                                        alt="avatar" />
-                                    <p class="mx-2 text-sm text-gray-600 dark:text-white"><span class="font-bold"
-                                            href="#">Sara Salah</span> replied on the <span
-                                            class="text-blue-500 hover:underline" href="#">Upload Image</span> artical .
-                                        2m</p>
-                                </a>
-                                <a href="#"
-                                    class="flex items-center px-4 py-3 -mx-2 transition-colors duration-300 transform border-b border-gray-100 hover:bg-gray-50 dark:hover:bg-gray-700 dark:border-gray-700">
-                                    <img class="flex-shrink-0 object-cover w-8 h-8 mx-1 rounded-full"
-                                        src="https://images.unsplash.com/photo-1531427186611-ecfd6d936c79?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=634&q=80"
-                                        alt="avatar" />
-                                    <p class="mx-2 text-sm text-gray-600 dark:text-white"><span class="font-bold"
-                                            href="#">Slick Net</span> start following you . 45m</p>
-                                </a>
-                                <a href="#"
-                                    class="flex items-center px-4 py-3 -mx-2 transition-colors duration-300 transform border-b border-gray-100 hover:bg-gray-50 dark:hover:bg-gray-700 dark:border-gray-700">
-                                    <img class="flex-shrink-0 object-cover w-8 h-8 mx-1 rounded-full"
-                                        src="https://images.unsplash.com/photo-1450297350677-623de575f31c?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=334&q=80"
-                                        alt="avatar" />
-                                    <p class="mx-2 text-sm text-gray-600 dark:text-white"><span class="font-bold"
-                                            href="#">Jane Doe</span> Like Your reply on <span
-                                            class="text-blue-500 hover:underline" href="#">Test with TDD</span> artical
-                                        . 1h</p>
-                                </a>
-                                <a href="#"
-                                    class="flex items-center px-4 py-3 -mx-2 transition-colors duration-300 transform hover:bg-gray-100 dark:hover:bg-gray-700">
-                                    <img class="flex-shrink-0 object-cover w-8 h-8 mx-1 rounded-full"
-                                        src="https://images.unsplash.com/photo-1580489944761-15a19d654956?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=398&q=80"
-                                        alt="avatar" />
-                                    <p class="mx-2 text-sm text-gray-600 dark:text-white"><span class="font-bold"
-                                            href="#">Abigail Bennett</span> start following you . 3h</p>
-                                </a>
-                            </div>
-                            <a href="#"
-                                class="block py-2 font-bold text-center text-white bg-gray-800 dark:bg-gray-700 hover:underline">See
-                                all notifications</a>
+                            class="absolute right-0 z-20 w-64 mt-2 p-4 overflow-hidden origin-top-right bg-white rounded-md shadow-lg sm:w-80 dark:bg-gray-800">
+                            <p class="text-xs text-muted-foreground">You don't have new notifications.</p>
                         </div>
                     </div>
                 </div>
@@ -175,13 +135,13 @@ onBeforeUnmount(() => {
                             class="absolute right-0 z-50 w-48 p-2 mt-2 origin-top-right bg-white rounded-md shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none"
                             role="menu" aria-orientation="vertical" aria-labelledby="user-menu-button" tabindex="-1">
                             <!-- Active: "bg-gray-100", Not Active: "" -->
-                            <RouterLink :to="Routes.profile.path" class="block px-4 py-2 text-sm text-gray-700"
+                            <RouterLink :to="Routes.profile.path" class="block w-full px-4 py-2 text-sm text-left text-muted-foreground hover:bg-muted"
                                 role="menuitem" tabindex="-1" id="user-menu-item-0">Your Profile</RouterLink>
-                            <a href="#" class="block px-4 py-2 text-sm text-gray-700" role="menuitem" tabindex="-1"
+                            <a href="#" class="block w-full px-4 py-2 mb-1 text-sm text-left text-muted-foreground hover:bg-muted" role="menuitem" tabindex="-1"
                                 id="user-menu-item-1">Settings</a>
                             <hr>
                             <button @click="modal.open()"
-                                class="block w-full px-4 py-2 mt-2 text-sm text-left text-muted-foreground hover:bg-muted">
+                                class="block w-full px-4 py-2 mt-1 text-sm text-left text-muted-foreground hover:bg-muted">
                                 Wallet
                             </button>
                         </div>
